@@ -118,6 +118,25 @@ function move() {
         new_unit = document.getElementsByClassName('cell-' + (coord_y + 1) + '-' + (coord_x))[0];
     }
 
+    // телепортация змейки на другой край поля при достижении границы
+    if(new_unit == undefined) {
+        if (direction == 'x-') {
+            new_unit = document.getElementsByClassName('cell-' + (coord_y) + '-' + (coord_x + 29))[0];
+        }
+        else if (direction == 'x+') {
+            new_unit = document.getElementsByClassName('cell-' + (coord_y) + '-' + (coord_x - 29))[0];
+        }
+        else if (direction == 'y+') {
+            new_unit = document.getElementsByClassName('cell-' + (coord_y + 29) + '-' + (coord_x))[0];
+        }
+        else if (direction == 'y-') {
+            new_unit = document.getElementsByClassName('cell-' + (coord_y - 29) + '-' + (coord_x))[0];
+        }
+     //   new_unit.setAttribute('class', new_unit.getAttribute('class') + ' snake-unit');
+      //  snake.push(new_unit);
+
+    }
+
     // Проверки
     // 1) new_unit не часть змейки
     // 2) Змейка не ушла за границу поля
@@ -147,7 +166,7 @@ function move() {
         }
    }
 }
-else {
+else { 
     finishTheGame();
 }
 }
